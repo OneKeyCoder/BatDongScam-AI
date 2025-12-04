@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  vanna:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vanna-server
+    restart: always
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      POSTGRES_HOST: ${POSTGRESQL_HOST}
+      POSTGRES_PORT: ${POSTGRESQL_PORT}
+      POSTGRES_DB: ${POSTGRESQL_DB}
+      POSTGRES_USER: ${POSTGRESQL_USER}
+      POSTGRES_PASSWORD: ${POSTGRESQL_PASSWORD}
+      TZ: ${TZ}
+    ports:
+      - "${VANNA_PORT}:8000"
+    networks:
+      - bds-project-network
+
+networks:
+  bds-project-network:
+    external: true
+    name: bds-project_bds-project-network
