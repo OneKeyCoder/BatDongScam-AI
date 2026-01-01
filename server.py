@@ -32,7 +32,7 @@ class AnonymousUserResolver(UserResolver):
 
 # LLM Service
 llm = OpenAILlmService(
-    model="gpt-4o",
+    model="o3",
     api_key=os.getenv("OPENAI_API_KEY"),
 )
 
